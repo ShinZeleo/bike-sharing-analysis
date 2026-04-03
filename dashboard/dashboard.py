@@ -2,12 +2,14 @@ import pandas as pd
 import streamlit as st
 import matplotlib.pyplot as plt
 import seaborn as sns
+import os
+
+base_path = os.path.dirname(__file__)
+# ambil data
+df = pd.read_csv(os.path.join(base_path, 'main_data.csv'))
+hour_df = pd.read_csv(os.path.join(base_path, '../data/hour.csv'))
 
 sns.set_style("whitegrid")
-# ambil data
-df = pd.read_csv('dashboard/main_data.csv')
-hour_df = pd.read_csv('data/hour.csv')
-
 st.set_page_config(page_title="Bike Sharing Dashboard", layout="wide")
 st.title("Dashboard Analisis Bike Sharing")
 
