@@ -58,7 +58,7 @@ submission/
 
 Dashboard dapat diakses melalui:
 
-[isi dengan link streamlit kamu]
+[\[link-streamlit\]](https://bike-sharing-analysis-zell.streamlit.app/)
 
 ## Catatan
 
