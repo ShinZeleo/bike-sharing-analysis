@@ -12,11 +12,13 @@ base_path = os.path.dirname(__file__)
 df = pd.read_csv(os.path.join(base_path, 'main_data.csv'))
 hour_df = pd.read_csv(os.path.join(base_path, '../data/hour.csv'))
 
-st.set_page_config(page_title="Bike Sharing Dashboard", layout="wide")
+# ubah ke datetime
+df['dteday'] = pd.to_datetime(df['dteday'])
 
+st.set_page_config(page_title="Bike Sharing Dashboard", layout="wide")
 st.title("Dashboard Analisis Bike Sharing")
 
-# filter data
+# filter
 st.sidebar.header("Filter Data")
 
 season_filter = st.sidebar.multiselect(
@@ -31,9 +33,22 @@ weather_filter = st.sidebar.multiselect(
     default=df['weathersit'].unique()
 )
 
+min_date = df['dteday'].min()
+max_date = df['dteday'].max()
+
+date_range = st.sidebar.date_input(
+    "Pilih Rentang Tanggal",
+    [min_date, max_date],
+    min_value=min_date,
+    max_value=max_date
+)
+
+# apply filter
 filtered_df = df[
     (df['season'].isin(season_filter)) &
-    (df['weathersit'].isin(weather_filter))
+    (df['weathersit'].isin(weather_filter)) &
+    (df['dteday'] >= pd.to_datetime(date_range[0])) &
+    (df['dteday'] <= pd.to_datetime(date_range[1]))
 ]
 
 st.sidebar.write("Jumlah data:", len(filtered_df))
