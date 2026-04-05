@@ -10,15 +10,15 @@ Dataset yang digunakan merupakan dataset Bike Sharing yang berisi data penyewaan
 
 Beberapa pertanyaan yang ingin dijawab melalui analisis ini:
 
-1. Apakah ada musim tertentu yang membuat penyewaan sepeda lebih ramai dari biasanya?
-2. Sejauh mana kondisi cuaca memengaruhi jumlah penyewa sepeda harian?
-3. Pada jam berapa saja penyewaan sepeda biasanya mencapai puncaknya?
+1. Bagaimana perbandingan jumlah penyewaan sepeda antar musim pada tahun 2012?
+2. Sejauh mana kondisi cuaca memengaruhi jumlah penyewaan sepeda harian selama tahun 2012?
+3. Bagaimana perbandingan tren jam sibuk penyewaan sepeda antara hari kerja dan hari libur dalam 12 bulan terakhir?
 
 ## Insight Utama
 
 - Musim gugur (Fall) memiliki rata-rata penyewaan tertinggi, sedangkan musim semi (Spring) paling rendah.
 - Cuaca cerah menghasilkan jumlah penyewaan tertinggi, sedangkan kondisi cuaca buruk menurunkan minat pengguna.
-- Terdapat dua puncak waktu penyewaan, yaitu pagi hari sekitar pukul 08.00 dan sore hari sekitar pukul 17.00–18.00.
+- Terdapat dua puncak waktu penyewaan pada hari kerja, yaitu pagi hari sekitar pukul 08.00 dan sore hari sekitar pukul 17.00–18.00. Pada hari libur, pola penyewaan lebih merata dengan puncak di siang hari.
 - Temperatur memiliki korelasi positif terhadap jumlah penyewaan, sedangkan kelembapan dan kecepatan angin cenderung berdampak negatif.
 
 ## Struktur Proyek
@@ -27,12 +27,12 @@ Beberapa pertanyaan yang ingin dijawab melalui analisis ini:
 submission/
 │
 ├── dashboard/
-│ ├── dashboard.py
-│ └── main_data.csv
+│   ├── dashboard.py
+│   └── main_data.csv
 │
 ├── data/
-│ ├── day.csv
-│ └── hour.csv
+│   ├── day.csv
+│   └── hour.csv
 │
 ├── Proyek_Analisis_Data.ipynb
 ├── README.md
@@ -40,18 +40,38 @@ submission/
 └── url.txt
 ```
 
+## Setup Environment
+
+### Menggunakan Conda
+
+```bash
+conda create --name main-ds python=3.9
+conda activate main-ds
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+### Menggunakan Pipenv
+
+```bash
+pipenv install
+pipenv shell
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
 ## Cara Menjalankan Dashboard
 
 1. Pastikan semua dependencies sudah terinstall:
 
-```
-    pip install -r requirements.txt
+```bash
+pip install -r requirements.txt
 ```
 
 2. Jalankan Streamlit:
 
-```
-    streamlit run dashboard/dashboard.py
+```bash
+streamlit run dashboard/dashboard.py
 ```
 
 ## Deployment
