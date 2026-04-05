@@ -3,7 +3,9 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import seaborn as sns
 import os
+import warnings
 
+warnings.filterwarnings('ignore', category=FutureWarning)
 sns.set_style("whitegrid")
 
 base_path = os.path.dirname(__file__)
@@ -121,7 +123,7 @@ with col1:
 
     fig, ax = plt.subplots(figsize=(8, 5))
     colors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4']
-    bars = sns.barplot(x='Musim', y='Rata-rata Penyewaan', data=season_df, ax=ax, hue='Musim', palette=colors, legend=False)
+    bars = sns.barplot(x='Musim', y='Rata-rata Penyewaan', data=season_df, hue='Musim', palette=colors, ax=ax, legend=False)
 
     ax.set_title("Rata-rata Penyewaan Sepeda Berdasarkan Musim", fontsize=14, fontweight='bold')
     ax.set_xlabel("Musim", fontsize=12)
@@ -164,8 +166,7 @@ with col3:
 
     fig, ax = plt.subplots(figsize=(8, 5))
     colors_w = ['#FFD93D', '#6BCB77', '#4D96FF']
-    bars = sns.barplot(x='Kondisi Cuaca', y='Rata-rata Penyewaan', data=weather_df, ax=ax,
-                       hue='Kondisi Cuaca', palette=colors_w[:len(weather_df)], legend=False)
+    bars = sns.barplot(x='Kondisi Cuaca', y='Rata-rata Penyewaan', data=weather_df, hue='Kondisi Cuaca', palette=colors_w[:len(weather_df)], ax=ax, legend=False)
 
     ax.set_title("Rata-rata Penyewaan Sepeda Berdasarkan Kondisi Cuaca", fontsize=14, fontweight='bold')
     ax.set_xlabel("Kondisi Cuaca", fontsize=12)
